@@ -568,7 +568,7 @@
   /* ---------- views ---------- */
   function frame(act) {
     const box = h('div', {});
-    app.replaceChildren(h('div', { class: 'topbar' }, h('a', { class: 'btn', href: '#/', style: 'text-decoration:none' }, '← My quests'), h('h2', {}, `${act.icon} ${act.title}`)), box);
+    app.replaceChildren(h('div', { class: 'topbar' }, h('a', { class: 'btn', href: '#/', style: 'text-decoration:none' }, '← My quests'), h('h2', {}, `${act.icon} ${act.title}`), window.PipLearn && window.PipLearn.topicFor[act.id] ? h('a', { class: 'btn', href: '#/learn/' + window.PipLearn.topicFor[act.id], style: 'text-decoration:none' }, '📚 Need a hint?') : null), box);
     return box;
   }
   function slot(a, nextId) {
@@ -602,6 +602,7 @@
           h('div', { class: 'qmeta' }, h('span', {}, `Level ${lvl}`), h('span', {}, `${LEVEL_SIZE - into} ⭐ to Level ${lvl + 1}`)),
           h('div', { class: 'lvlbar' }, h('i', { style: `width:${into / LEVEL_SIZE * 100}%` })),
           next ? h('div', { class: 'row' }, h('a', { class: 'btn primary big', href: '#/' + next.id, style: 'text-decoration:none' }, `${next.icon} Next quest: ${next.title}`)) : null)),
+      h('a', { class: 'slot s-other learnbanner', href: '#/learn' }, h('div', { class: 'time' }, 'Learn'), h('div', { class: 'ico' }, '📚'), h('div', { class: 'info' }, h('div', { class: 'ttl' }, 'Learn Zone'), h('div', { class: 'desc' }, 'Fractions, Roman numerals, times tables and more. Play with examples before you start!')), h('div', { class: 'status' }, 'Explore ▶')),
       h('h2', { class: 'section-title' }, '🗓️ Today\'s quests'),
       ...main.map(a => slot(a, next && next.id)),
       h('h2', { class: 'section-title' }, '🌟 Bonus quests'), h('p', { class: 'muted' }, 'Finished early? Try these for extra stars!'),
@@ -629,6 +630,7 @@
     const id = location.hash.replace(/^#\/?/, '');
     if (!id) return home();
     if (id === 'certificate') return certificate();
+    if (id === 'learn' || id.startsWith('learn/')) return window.PipLearn.render(app, id.split('/')[1]);
     const act = ACTS.find(a => a.id === id && a.run);
     if (!act) return home();
     act.run(frame(act));

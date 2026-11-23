@@ -30,6 +30,21 @@ Pip the fox guides your child through a day of bite-sized "quests". Each one ear
 
 The times are only a guide, so your child can do the quests in any order and at their own pace.
 
+## 📚 Learn Zone
+
+Stuck, or want to warm up first? The **Learn** link at the top opens a set of hands-on guides, with sliders and examples, for:
+
+- Times tables: arrays, fact families and tricks
+- Fractions: pizza builder, equivalent fractions, fractions of an amount
+- Place value and rounding
+- Roman numerals: the rules, a converter and a decoder
+- Telling the time: a clock with 12-hour and 24-hour time
+- Grammar and spelling cheat sheets
+- Roman Britain timeline
+- Science: states of matter and conductors
+
+Every quest also has a **📚 Need a hint?** button that jumps to the matching guide.
+
 ## For parents
 
 - 📋 **Lesson plan:** the site has a printable [lesson plan page](https://shaky411.github.io/Pip-s-Learning-Quest/plan.html) with National Curriculum links, learning goals and offline activities for each quest.
@@ -64,6 +79,7 @@ npx live-server
 |------|--------------|
 | `index.html` | The home page |
 | `app.js` | All the activities and game features |
+| `learn.js` | The Learn Zone guides |
 | `styles.css` | Colours, layout and animations |
 | `plan.html` | Printable lesson plan for parents |
 
