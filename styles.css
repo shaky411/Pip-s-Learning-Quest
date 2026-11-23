@@ -242,3 +242,7 @@ mark{background:#ffe27a;border-radius:6px;padding:0 4px;color:var(--ink)}
 .placed.ins{background:#fde7eb;border-color:var(--bad)}
 .steps li{margin:8px 0}
 @media(max-width:560px){.learnlink{padding:6px 10px;font-size:.85rem}.site .in{gap:8px}.eqlab{width:52px}}
+
+/* links styled as buttons must be real blocks so their padding doesn't overlap neighbours */
+a.btn{display:inline-block;text-align:center;line-height:1.3}
+.card>a.btn{margin-top:10px}
